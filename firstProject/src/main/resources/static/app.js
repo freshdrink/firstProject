@@ -10,4 +10,4 @@
 		$scope.angularTest = "Angular Test Success";
 		
 	}
-})();
+})(); 
