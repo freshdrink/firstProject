@@ -7,7 +7,7 @@
 	function test($scope){
 		console.info("test");
 		
-		$scope.angularTest = "Angular Test Success";
+		$scope.angularTest = "Angular Test Success"; 
 		
 	}
 })(); 
