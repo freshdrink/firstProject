@@ -4,9 +4,10 @@
 	angular.module('myApp.login', [])
 	.controller('loginCtrl', loginCtrl);
 	
-	
 	function loginCtrl($scope){
-		$scope.test = "loginCtrl";
+		console.info("loginCtrl");
 	};
+
+
 	
 })();
