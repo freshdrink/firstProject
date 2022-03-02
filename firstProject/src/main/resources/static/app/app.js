@@ -3,7 +3,7 @@
 	
 	angular.module('myApp', [
 		'ui.router',
-		'myApp.theme',
+		'myApp.theme', 
 		'myApp.login',
 		'myApp.main'
 	]).config(routeConfig)

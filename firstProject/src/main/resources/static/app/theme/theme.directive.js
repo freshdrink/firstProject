@@ -9,7 +9,7 @@
 		A : attribute - html 속성 값처럼 사용 - ex) <div my-sample>
 		E : element - 태그처럼 작성하여 화면에 보여줌 - ex) <my-sample>
 		C : class - 클래스 명처럼 사용 - ex) <div class="my-sample">
-		M : comment - 주석 - ex) <!-- directive: my-sample -->
+		M : comment - 주석 - ex) <!-- directive: my-sample --> 
 	**/
 	
 	function mainTop(){
