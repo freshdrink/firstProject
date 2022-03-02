@@ -1,14 +1,19 @@
 <!DOCTYPE HTML>
-<html ng-app="myApp">
+<html ng-app="myApp" lang="kr">
 <head>
-<title>Spring Boot - Angularjs Example</title>
+<title>Spring Boot - Angular Test</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<script src="app.js"></script>
 </head>
-<body ng-controller="test">
-	<h3>Hello World!</h3>
-	<p>{{angularTest}}</p> 
+<body>
+	
+	<div ui-view></div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.30/angular-ui-router.min.js"></script>
+	
+	<script src="app/app.js"></script>
+	<script src="app/pages/login/login.module.js"></script>
+
 </body>  
 </html>
