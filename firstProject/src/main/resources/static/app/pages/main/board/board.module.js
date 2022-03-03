@@ -2,12 +2,15 @@
 	'use strict';
 	
 	angular.module('myApp.main.board',[])
-	.config(routeConfig)
-	.controller('boardCtrl', boardCtrl);
+		.config(routeConfig)
+		.controller('boardCtrl', boardCtrl)
 	
-	function boardCtrl($scope){
+	function boardCtrl($scope, boardService){
 		console.info("boardCtrl");
-	};
+		
+		
+		
+	}
 	
 	function routeConfig($stateProvider){
 		$stateProvider
