@@ -3,7 +3,7 @@
 	
 	angular.module('myApp.main.board',[])
 		.config(routeConfig)
-		.controller('boardCtrl', boardCtrl)
+		.controller('boardCtrl', boardCtrl);
 	
 	function boardCtrl($scope, boardService){
 		console.info("boardCtrl");
@@ -24,7 +24,7 @@
 				}
 			}
 		});
-	};
+	}
 
 
 })();

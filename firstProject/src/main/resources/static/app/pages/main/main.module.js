@@ -5,7 +5,7 @@
 		'ui.router',
 		'myApp.main.board'
 	])
-	.controller('mainCtrl', mainCtrl);
+	.controller('mainCtrl', mainCtrl)
 	
 	function mainCtrl($scope){
 		console.info("mainCtrl");

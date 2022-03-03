@@ -2,7 +2,7 @@
 	'use strict';
 	
 	angular.module('myApp.main.board')
-		.service('boardService', boardService)
+		.service('boardService', boardService);
 	
 	function boardService(){
 		console.info("boardService");
