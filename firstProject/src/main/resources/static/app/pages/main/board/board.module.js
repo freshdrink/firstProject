@@ -8,6 +8,14 @@
 	function boardCtrl($scope, boardService){
 		console.info("boardCtrl");
 		
+		$scope.test = function(){
+			return boardService.getBoard().then(function(response){
+				console.info("response", response);
+			}, function(error) {
+				console.error('error', error);
+			});
+		}
+		$scope.test();
 		
 		
 	}

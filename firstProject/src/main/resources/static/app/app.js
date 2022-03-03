@@ -7,6 +7,9 @@
 		'myApp.login',
 		'myApp.main'
 	]).config(routeConfig)
+	.constant('config',{
+		apiUrl : 'testApi/v1.0/'
+	})
 	
 	function routeConfig($stateProvider, $urlRouterProvider){
 		
