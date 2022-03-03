@@ -1,6 +1,9 @@
 /* header */
 header {position: fixed; top:0; left:0; right:0; background-color:#2C2A29de; color: white; }
 
+/* footer */
+footer {background-color:#2C2A29; color: white; text-align: center; left:0; right:0; bottom:0; padding: 20px;}
+
 main {padding-top:75px;}
 
 /* common */
