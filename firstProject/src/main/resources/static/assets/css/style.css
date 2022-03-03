@@ -1,6 +1,10 @@
+/* header */
+header {position: fixed; top:0; left:0; right:0; background-color:#2C2A29de; color: white; }
+
+main {padding-top:75px;}
+
 /* common */
 .center {text-align: center;}
-
 
 /* login */
 .login {display: flex; height: 100vh; justify-content: center; align-items: center; background-image:url("../images/background.jpg");}
