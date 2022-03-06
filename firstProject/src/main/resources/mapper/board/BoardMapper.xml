@@ -11,6 +11,6 @@
 		FROM board
 		WHERE NO = '3'
 		ORDER BY title DESC
-	</select>
+	</select> 
 
 </mapper>
