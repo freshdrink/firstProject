@@ -1,6 +1,5 @@
 package com.project.firstProject.board.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.slf4j.Logger;

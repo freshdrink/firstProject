@@ -8,5 +8,7 @@
 		<typeAlias alias="Integer" type="java.lang.Integer" />
 		<typeAlias alias="Boolean" type="java.lang.Boolean" />
 	
+		<typeAlias alias="BoardVO" type="com.project.firstProject.board.vo.BoardVO" />
+		
 	</typeAliases>
 </configuration>
