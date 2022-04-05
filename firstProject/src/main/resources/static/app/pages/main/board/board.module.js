@@ -9,7 +9,8 @@
 		console.info("boardCtrl");
 		
 		$scope.test = function(){
-			return boardService.getBoard().then(function(response){
+			$scope.number = 2;
+			return boardService.getBoard({seq: $scope.number}).then(function(response){
 				console.info("response", response);
 			}, function(error) {
 				console.error('error', error);

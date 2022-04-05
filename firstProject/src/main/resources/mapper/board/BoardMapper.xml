@@ -4,12 +4,12 @@
 
 	<select id="getBoard" parameterType="Map" resultType="Map">
 		SELECT
+			seq as seq,
 			title as title,
 			name as name,
-			age as age,
 			date as date
 		FROM board
-		WHERE NO = '3'
+		WHERE seq = #{seq}::int
 		ORDER BY title DESC
 	</select> 
 

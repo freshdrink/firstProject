@@ -13,7 +13,8 @@
 	
 	function routeConfig($stateProvider, $urlRouterProvider){
 		
-		$urlRouterProvider.otherwise("/login"); // 없는 경로일 경우, /login으로 초기화
+		//$urlRouterProvider.otherwise("/login"); // 없는 경로일 경우, /login으로 초기화
+		$urlRouterProvider.otherwise("/main/board"); // 없는 경로일 경우, /login으로 초기화
 		$stateProvider
 		.state('home',{
 			url : '', //주소창에 표시될 url

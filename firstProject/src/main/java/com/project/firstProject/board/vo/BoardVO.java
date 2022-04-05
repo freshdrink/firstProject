@@ -2,12 +2,19 @@ package com.project.firstProject.board.vo;
 
 public class BoardVO {
 	
+	private String seq;
 	private String title;
 	private String createId;
 	private String createDt;
 	private String content;
 	
 	
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -36,10 +43,9 @@ public class BoardVO {
 	
 	@Override
 	public String toString() {
-		return "BoardVO [title=" + title + ", createId=" + createId + ", createDt=" + createDt + ", content=" + content
-				+ "]";
+		return "BoardVO [seq=" + seq + ", title=" + title + ", createId=" + createId + ", createDt=" + createDt
+				+ ", content=" + content + "]";
 	}
-	
 	
 
 }

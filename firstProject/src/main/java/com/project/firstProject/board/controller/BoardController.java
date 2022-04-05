@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.firstProject.board.service.BoardService;
+import com.project.firstProject.board.vo.BoardVO;
 
 /**
  * 
@@ -48,13 +49,13 @@ public class BoardController {
 	private BoardService boardService;
 	
 	@RequestMapping(value="/getBoard", method=RequestMethod.GET) // 매핑 경로의 공통부분 (자식)
-	public Map<String, Object> getBoard(){
+	public Map<String, Object> getBoard(BoardVO boardVo){
 		logger.info("getBoard");
 		
 		//Map<String, Object> maplist = new HashMap<String, Object>();
 		//maplist.put("list", maplist);
 		
-		Map<String, Object> maplist = boardService.getBoard();
+		Map<String, Object> maplist = boardService.getBoard(boardVo);
 		
 		return maplist;
 	}

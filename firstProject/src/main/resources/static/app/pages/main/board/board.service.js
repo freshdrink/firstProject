@@ -14,9 +14,9 @@
 		 config : app.js에서 .constant에서 작성한대로 설정된 값. (constant : 상수 / 일정한)
 		 * */
 		
-		this.getBoard = function getBoard(){
+		this.getBoard = function getBoard(param){
 			console.info("getBoard");
-			return $http.get(config.apiUrl + 'board/getBoard').then(function(response){
+			return $http.get(config.apiUrl + 'board/getBoard',{params : param}).then(function(response){
 				return response;
 			});
 		};
