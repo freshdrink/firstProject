@@ -15,7 +15,8 @@
 	function mainTop(){
 		return {
 			restrict: 'E',
-			templateUrl: 'app/theme/topBottom/mainTop.html'
+			templateUrl: 'app/theme/topBottom/mainTop.html',
+			controller : 'mainTopCtrl'
 		};
 	};
 	

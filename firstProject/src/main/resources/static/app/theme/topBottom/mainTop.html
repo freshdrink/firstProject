@@ -15,9 +15,13 @@
 				<input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
 			</form>
 			
-			<div class="text-end">
-				<button type="button" class="btn btn-outline-light me-2">Login</button>
+			<div class="text-end" ng-if="!loginSession">
+				<button type="button" class="btn btn-outline-light me-2" ui-sref="login">Login</button>
 				<button type="button" class="btn btn-warning">Sign-up</button>
+			</div>
+			
+			<div class="text-end" ng-if="loginSession">
+				<button type="button" class="btn btn-warning" ng-click="logout();">Logout</button>
 			</div>
 		</div>
 	</div>
