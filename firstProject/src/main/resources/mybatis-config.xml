@@ -9,6 +9,7 @@
 		<typeAlias alias="Boolean" type="java.lang.Boolean" />
 	
 		<typeAlias alias="BoardVO" type="com.project.firstProject.board.vo.BoardVO" />
+		<typeAlias alias="LoginVO" type="com.project.firstProject.login.vo.LoginVO" />
 		
 	</typeAliases>
 </configuration>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.firstProject.login.mapper.LoginMapper">
+
+	<select id="login" parameterType="LoginVO" resultType="Map">
+		SELECT
+			user_seq as seq,
+			user_id as userId,
+			passwd as passwd,
+			user_name as userName,
+			email as email,
+			cret_dt as cretDt,
+			theme as theme,
+			lang as lang,
+			login_fail as loginFailCnt
+		FROM user_table
+		WHERE use_yn = 'Y'
+		AND del_yn = 'N'
+		AND user_id = #{userId}
+	</select> 
+
+	<update id="loginFail" parameterType="String">
+		UPDATE user_table
+		SET
+			login_fail = login_fail + 1
+		WHERE
+			user_id = #{userId}
+	</update>
+	
+	<update id="loginReset" parameterType="String">
+		UPDATE user_table
+		SET
+			login_fail = 0
+		WHERE
+			user_id = #{userId}
+	</update>
+	
+</mapper>
