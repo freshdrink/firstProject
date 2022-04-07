@@ -35,4 +35,44 @@
 			user_id = #{userId}
 	</update>
 	
+	<select id="getMenuList" parameterType="Map" resultType="MenuVO">
+		SELECT
+			menu_seq as menuSeq,
+			menu_id as menuId,
+			menu_name as menuName
+		FROM menu_table
+		WHERE use_yn = 'Y'
+		AND del_yn = 'N'
+	</select>
+	
+	<select id="getUser" parameterType="LoginVO" resultType="Map">
+		SELECT
+			user_seq as seq,
+			user_id as userId,
+			user_name as userName,
+			email as email,
+			coalesce(etc, '-') as etc,
+			to_char(cret_dt, 'YYYY-MM-DD HH24:mm') as cretDt,
+			coalesce(to_char(modify_dt, 'YYYY-MM-DD HH24:mm'), '-') as modiDt,
+			theme as theme,
+			lang as lang,
+			login_fail as loginFailCnt,
+			user_img as userImg
+		FROM user_table
+		WHERE use_yn = 'Y'
+		AND del_yn = 'N'
+		AND user_id = #{userId}
+	</select> 
+	
+	<update id="updateUser" parameterType="Map">
+		UPDATE user_table
+		SET
+			user_name = #{username},
+			email = #{email},
+			etc = #{etc},
+			modify_dt = now()
+		WHERE
+			user_id = #{userid}
+	</update> 
+	
 </mapper>

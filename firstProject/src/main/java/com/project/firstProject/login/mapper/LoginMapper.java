@@ -16,5 +16,11 @@ public interface LoginMapper {
 	public void loginFail(String userId);
 	
 	public void loginReset(String userId);
-
+	
+	public List<MenuVO> getMenuList(Map<String, Object> params);
+	
+	public Map<String, Object> getUser(LoginVO loginVo);
+	
+	public int updateUser(Map<String, Object> param);
+	
 }

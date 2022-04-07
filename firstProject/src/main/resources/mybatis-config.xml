@@ -10,6 +10,7 @@
 	
 		<typeAlias alias="BoardVO" type="com.project.firstProject.board.vo.BoardVO" />
 		<typeAlias alias="LoginVO" type="com.project.firstProject.login.vo.LoginVO" />
+		<typeAlias alias="MenuVO" type="com.project.firstProject.login.vo.MenuVO" />
 		
 	</typeAliases>
 </configuration>

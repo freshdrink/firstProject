@@ -58,4 +58,19 @@ public class LoginServiceImpl implements LoginService {
 		return isEquals;
 	}
 
+	@Override
+	public List<MenuVO> getMenuList(Map<String, Object> params) {
+		return loginMapper.getMenuList(params);
+	}
+
+	@Override
+	public Map<String, Object> getUser(LoginVO loginVo) {
+		return loginMapper.getUser(loginVo);
+	}
+
+	@Override
+	public int updateUser(Map<String, Object> param) {
+		return loginMapper.updateUser(param);
+	}
+
 }

@@ -77,4 +77,37 @@ public class loginController {
 		return userInfo;
 	}
 	
+	
+	@RequestMapping(value="/getMenuList", method=RequestMethod.GET) // 매핑 경로의 공통부분 (자식)
+	public Map<String, Object> getMenuList(Map<String, Object> params, HttpServletRequest request){
+		
+		System.out.println("request >> " + request.getSession());
+		
+		Map<String, Object> menuList = new HashMap<String, Object>();
+
+		menuList.put("list", loginService.getMenuList(params));
+
+		return menuList;
+	}
+	
+	
+	@RequestMapping(value="/getUser", method=RequestMethod.GET) // 매핑 경로의 공통부분 (자식)
+	public Map<String, Object> getUser(LoginVO loginVo){
+		
+		Map<String, Object> userList = new HashMap<String, Object>();
+
+		userList.put("data", loginService.getUser(loginVo));
+
+		return userList;
+	}
+	
+	
+	@RequestMapping(value="/updateUser", method=RequestMethod.POST) // 매핑 경로의 공통부분 (자식)
+	public int getUser(@RequestBody Map<String, Object> param){
+		int result = loginService.updateUser(param);
+		
+		return result;
+	}
+	
+	
 }

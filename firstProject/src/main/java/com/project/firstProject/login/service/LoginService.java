@@ -12,5 +12,11 @@ public interface LoginService {
 	public Map<String, Object> loginProcess(LoginVO loginVo) throws LoginProcessExeption;
 	
 	public Boolean pwdCheck(String inpPwd, String chkPwd);
-
+	
+	public List<MenuVO> getMenuList(Map<String, Object> params);
+	
+	public Map<String, Object> getUser(LoginVO loginVo);
+	
+	public int updateUser(Map<String, Object> param);
+	
 }
