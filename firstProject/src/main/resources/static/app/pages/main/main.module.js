@@ -3,7 +3,8 @@
 	
 	angular.module('myApp.main',[
 		'ui.router',
-		'myApp.main.board'
+		'myApp.main.board',
+		'myApp.main.user'
 	])
 	.controller('mainCtrl', mainCtrl)
 	

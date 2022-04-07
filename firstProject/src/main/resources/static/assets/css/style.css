@@ -2,12 +2,15 @@
 header {position: fixed; top:0; left:0; right:0; background-color:#2C2A29de; color: white; }
 
 /* footer */
-footer {background-color:#2C2A29; color: white; text-align: center; left:0; right:0; bottom:0; padding: 20px;}
+footer {background-color:#2C2A29; color: white; text-align: center; left:0; right:0; bottom:0; padding: 20px; margin-top: 40px;}
 
 main {padding-top:75px;}
 
 /* common */
 .center {text-align: center;}
+.layer-right {float: right;}
+.layer-left {float: left;}
+.none {display: none;}
 
 /* login */
 .login {display: flex; height: 100vh; justify-content: center; align-items: center; background-image:url("../images/background.jpg");}
@@ -16,3 +19,8 @@ main {padding-top:75px;}
 
 input[type="email"] {margin-bottom: -1px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;}
 input[type="password"] {margin-bottom: 15px; border-top-left-radius: 0; border-top-right-radius: 0;}
+
+
+/* user */
+.user-default {position:relative; background-image:url("../images/user.png"); background-size:contain; width:200px; height:200px; border-radius: 70%; border: 3px solid #BDBDBD;}
+.user-default::file-selector-button {display: none;}

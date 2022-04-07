@@ -1,0 +1,59 @@
+<div class="container px-4 py-5">
+	<h2 class="pb-2 border-bottom">사용자 관리</h2>
+	
+	<div class="text-center mt-3 mb-3">
+		<label for="userImage"><img class="user-default" id="test"></label>
+		<input class="none" type="file" accept="image/*" id="userImage">
+	</div>
+
+	<form>
+		<div class="row mb-3">
+			<label for="userId" class="col-sm-2 col-form-label">사용자 아이디</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="userId" ng-model="userdata.userid" disabled>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="userName" class="col-sm-2 col-form-label">사용자 이름</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="userName" ng-model="userdata.username" ng-disabled="regAble">
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="email" class="col-sm-2 col-form-label">사용자 이메일</label>
+			<div class="col-sm-10">
+				<input type="email" class="form-control" id="email" ng-model="userdata.email" ng-disabled="regAble" required>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="etc" class="col-sm-2 col-form-label">비고</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="etc" ng-model="userdata.etc" ng-disabled="regAble">
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="createDt" class="col-sm-2 col-form-label">등록일자</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="createDt" ng-model="userdata.cretdt" disabled>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="createDt" class="col-sm-2 col-form-label">수정일자</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="" ng-model="userdata.modidt" disabled>
+			</div>
+		</div>
+		
+		<div class="layer-right" ng-hide="regAble">
+			<button type="button" class="btn btn-outline-secondary" ng-click="user(); regAble=true;">취소</button>
+			<button type="button" class="btn btn-success" ng-click="regist();">수정</button>
+		</div>
+		
+		<div class="layer-right" ng-hide="!regAble">
+			<button type="button" class="btn btn-outline-secondary">비밀번호 변경</button>
+			<button type="button" class="btn btn-success" ng-click="regAble=false;">계정 수정</button>
+		</div>
+	</form>
+
+</div>
+

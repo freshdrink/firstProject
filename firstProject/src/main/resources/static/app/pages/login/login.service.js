@@ -13,6 +13,13 @@
 				return data
 			});
 		}
+		
+		this.getMenuList = function getMenuList(){
+			console.info("menuList");
+			return $http.get(config.apiUrl + 'login/getMenuList').then(function(data){
+				return data;
+			});
+		}
 
 	}
 	
