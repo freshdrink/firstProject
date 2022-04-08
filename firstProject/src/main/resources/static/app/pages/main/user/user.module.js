@@ -92,7 +92,8 @@
 				if(response.data){
 					alert("비밀번호가 변경되었습니다.");
 					delete sessionStorage.userInfo;
-					/*$state.go("login");*/
+					$('#passwdChkModal').modal('hide');
+					$state.go("login");
 				}
 				
 			}, function(error){
