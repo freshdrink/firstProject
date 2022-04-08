@@ -50,10 +50,44 @@
 		</div>
 		
 		<div class="layer-right" ng-hide="!regAble">
-			<button type="button" class="btn btn-outline-secondary">비밀번호 변경</button>
+			<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#passwdChkModal">비밀번호 변경</button>
 			<button type="button" class="btn btn-success" ng-click="regAble=false;">계정 수정</button>
 		</div>
 	</form>
 
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="passwdChkModal">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="staticBackdropLabel">패스워드 변경</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="mb-3">
+						<label for="passwd" class="col-form-label">변경 전 패스워드:</label>
+						<input type="password" class="form-control" id="passwd" ng-model="passwd">
+					</div>
+					<div class="mb-3">
+						<label for="newPasswd" class="col-form-label">변경할 패스워드:</label>
+						<input type="password" class="form-control" id="newPasswd" ng-model="newPasswd">
+					</div>
+					<div class="mb-3">
+						<label for="newPasswd2" class="col-form-label">변경 패스워드 확인:</label>
+						<input type="password" class="form-control" id="newPasswd2" ng-model="newPasswdChk">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">닫기</button>
+				<button type="button" class="btn btn-outline-danger" ng-click="changePw();">패스워드 변경</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 

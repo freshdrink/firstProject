@@ -12,8 +12,12 @@
 		$scope.logout = function(){
 			delete sessionStorage.userInfo;
 			alert('로그아웃 되었습니다.');
+			
 			$state.go('board');
-			/*$window.location.reload();*/
+			setTimeout(function(){
+				$window.location.reload();
+			},50);
+			
 		}
 		
 		$scope.menuList = function(){

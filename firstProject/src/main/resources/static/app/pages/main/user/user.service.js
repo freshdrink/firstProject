@@ -14,8 +14,15 @@
 		};
 		
 		this.updateUser = function updateUser(param){
-			console.info("param", param);
+			console.info("updateUser");
 			return $http.post(config.apiUrl + 'login/updateUser', param).then(function(response){
+				return response;
+			});
+		}
+		
+		this.changePasswd = function changePasswd(param){
+			console.info("changePasswd", param);
+			return $http.post(config.apiUrl + 'login/changePasswd', param).then(function(response){
 				return response;
 			});
 		}
