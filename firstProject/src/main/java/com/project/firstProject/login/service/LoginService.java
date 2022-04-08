@@ -19,4 +19,7 @@ public interface LoginService {
 	
 	public int updateUser(Map<String, Object> param);
 	
+	public int changePasswd(Map<String, Object> param) throws LoginProcessExeption;
+	
+	
 }

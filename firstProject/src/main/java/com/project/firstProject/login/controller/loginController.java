@@ -110,4 +110,18 @@ public class loginController {
 	}
 	
 	
+	@RequestMapping(value="/changePasswd", method=RequestMethod.POST) // 매핑 경로의 공통부분 (자식)
+	public int changePasswd(@RequestBody Map<String, Object> param) throws LoginProcessExeption{
+		int result = loginService.changePasswd(param);
+		return result;
+	}
+	
+	
+	/*@RequestMapping(value="/deleteChk", method=RequestMethod.POST) // 매핑 경로의 공통부분 (자식)
+	public int deleteChk(@RequestBody Map<String, Object> param){
+		int result = loginService.deleteChk(param);
+		return result;
+	}
+	*/
+	
 }

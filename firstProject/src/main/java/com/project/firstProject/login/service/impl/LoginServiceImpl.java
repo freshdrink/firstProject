@@ -12,6 +12,8 @@ import com.project.firstProject.login.service.LoginService;
 import com.project.firstProject.login.vo.LoginVO;
 import com.project.firstProject.login.vo.MenuVO;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
+
 @Service
 public class LoginServiceImpl implements LoginService {
 
@@ -71,6 +73,25 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public int updateUser(Map<String, Object> param) {
 		return loginMapper.updateUser(param);
+	}
+
+	@Override
+	public int changePasswd(Map<String, Object> param) throws LoginProcessExeption {
+		
+		LoginVO loginVo = new LoginVO();
+		loginVo.setUserId((String)param.get("userid"));
+		
+		Map<String, Object> login = loginMapper.login(loginVo);
+		
+		Boolean pwdFailChk = pwdCheck((String)param.get("passwd"), (String)login.get("passwd"));
+		
+		if(!pwdFailChk) {
+			throw new LoginProcessExeption("패스워드를 다시 확인해주세요.");
+		}else if(!param.get("newPwd").equals(param.get("pwdChk"))){
+			throw new LoginProcessExeption("패스워드가 일치하지 않습니다.");
+		}
+		
+		return loginMapper.changePasswd(param);
 	}
 
 }

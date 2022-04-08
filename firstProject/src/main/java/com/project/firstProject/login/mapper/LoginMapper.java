@@ -23,4 +23,6 @@ public interface LoginMapper {
 	
 	public int updateUser(Map<String, Object> param);
 	
+	public int changePasswd(Map<String, Object> param);
+	
 }

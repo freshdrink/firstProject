@@ -75,4 +75,13 @@
 			user_id = #{userid}
 	</update> 
 	
+	<update id="changePasswd" parameterType="Map">
+		UPDATE user_table
+		SET
+			passwd = #{pwdChk},
+			modify_dt = now()
+		WHERE
+			user_id = #{userid}
+	</update> 
+	
 </mapper>
