@@ -94,4 +94,26 @@ public class LoginServiceImpl implements LoginService {
 		return loginMapper.changePasswd(param);
 	}
 
+	@Override
+	public int deleteChk(Map<String, Object> param) throws LoginProcessExeption {
+		
+		LoginVO loginVo = new LoginVO();
+		loginVo.setUserId((String)param.get("userid"));
+		
+		Map<String, Object> login = loginMapper.login(loginVo);
+		
+		Boolean pwdFailChk = pwdCheck((String)param.get("passwd"), (String)login.get("passwd"));
+		
+		if(!pwdFailChk) {
+			throw new LoginProcessExeption("패스워드를 다시 확인해주세요.");
+		}
+		
+		return loginMapper.deleteChk(param);
+	}
+
+	@Override
+	public int setSignUp(Map<String, Object> param) {
+		return loginMapper.setSignUp(param);
+	}
+
 }

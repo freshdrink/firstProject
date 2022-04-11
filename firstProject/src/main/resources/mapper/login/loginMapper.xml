@@ -51,7 +51,7 @@
 			user_id as userId,
 			user_name as userName,
 			email as email,
-			coalesce(etc, '-') as etc,
+			address as address,
 			to_char(cret_dt, 'YYYY-MM-DD HH24:mm') as cretDt,
 			coalesce(to_char(modify_dt, 'YYYY-MM-DD HH24:mm'), '-') as modiDt,
 			theme as theme,
@@ -69,7 +69,7 @@
 		SET
 			user_name = #{username},
 			email = #{email},
-			etc = #{etc},
+			address = #{address},
 			modify_dt = now()
 		WHERE
 			user_id = #{userid}
@@ -83,5 +83,22 @@
 		WHERE
 			user_id = #{userid}
 	</update> 
+	
+	<update id="deleteChk" parameterType="Map">
+		UPDATE user_table
+		SET
+			use_yn = 'N',
+			del_yn = 'Y',
+			modify_dt = now()
+		WHERE
+			user_id = #{userid}
+	</update> 	
+	
+	<insert id="setSignUp" parameterType="Map">
+		INSERT INTO user_table 
+			(user_id, passwd, user_name, email, address, cret_dt) 
+		VALUES
+			(#{userId}, #{passwd}, #{userNm}, #{email}, #{addr}, now());
+	</insert>
 	
 </mapper>

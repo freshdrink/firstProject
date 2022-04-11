@@ -25,4 +25,8 @@ public interface LoginMapper {
 	
 	public int changePasswd(Map<String, Object> param);
 	
+	public int deleteChk(Map<String, Object> param);
+	
+	public int setSignUp(Map<String, Object> param);
+	
 }

@@ -21,5 +21,8 @@ public interface LoginService {
 	
 	public int changePasswd(Map<String, Object> param) throws LoginProcessExeption;
 	
+	public int deleteChk(Map<String, Object> param) throws LoginProcessExeption;	
+	
+	public int setSignUp(Map<String, Object> param);
 	
 }
