@@ -5,7 +5,7 @@
 		.config(routeConfig)
 		.controller('userCtrl', userCtrl);
 	
-	function userCtrl($scope, $state, userService){
+	function userCtrl($scope, $state, $window, userService){
 		console.info("userCtrl");
 
 		var userInfo = JSON.parse(sessionStorage.userInfo);
@@ -101,6 +101,44 @@
 				alert(error.data.message);
 			});
 			
+		}
+		
+		
+		$scope.delUser = function(){
+			if($scope.deleteChk == undefined || $scope.deleteChk == ''){
+				alert("패스워드를 입력해주세요.");
+				return;
+			}
+			
+			if(confirm("정말로 탈퇴하시겠습니까?")){
+				
+				var param = {
+						userid : userInfo.userid,
+						passwd : $scope.deleteChk
+				}
+				
+				return userService.deleteChk(param).then(function(response){
+					console.info("response deleteChk", response);
+					
+					if(response.data){
+						alert("계정이 삭제 되었습니다.");
+						delete sessionStorage.userInfo;
+						$('#userDelete').modal('hide');
+						$state.go("board");
+
+						setTimeout(function(){
+							$window.location.reload();
+						},50);
+					}
+					
+				}, function(error){
+					console.error("error", error);
+					alert(error.data.message);
+				});
+				
+			}else{
+				return;
+			}
 		}
 		
 		

@@ -5,6 +5,7 @@
 		'ui.router',
 		'myApp.theme', 
 		'myApp.login',
+		'myApp.signUp',
 		'myApp.main'
 	]).config(routeConfig)
 	.constant('config',{

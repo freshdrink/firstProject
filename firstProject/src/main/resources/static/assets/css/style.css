@@ -8,6 +8,8 @@ main {padding-top:75px;}
 
 /* common */
 .center {text-align: center;}
+.right {text-align: right;}
+.left {text-align: left;}
 .layer-right {float: right;}
 .layer-left {float: left;}
 .none {display: none;}
@@ -24,3 +26,8 @@ input[type="password"] {margin-bottom: 15px; border-top-left-radius: 0; border-t
 /* user */
 .user-default {position:relative; background-image:url("../images/user.png"); background-size:contain; width:200px; height:200px; border-radius: 70%; border: 3px solid #BDBDBD;}
 .user-default::file-selector-button {display: none;}
+
+
+/* signup */
+.signup {padding:15px 30px;}
+.signupbtn {width:49%;}

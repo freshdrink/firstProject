@@ -27,6 +27,13 @@
 			});
 		}
 		
+		this.deleteChk = function deleteChk(param){
+			console.info("delUser", param);
+			return $http.post(config.apiUrl + 'login/deleteChk', param).then(function(response){
+				return response;
+			});
+		}
+		
 	};
 
 })();

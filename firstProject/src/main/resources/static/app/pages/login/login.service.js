@@ -20,6 +20,13 @@
 				return data;
 			});
 		}
+		
+		this.setSignUp = function setSignUp(param){
+			console.info("setSignUp", param);
+			return $http.post(config.apiUrl + 'login/setSignUp', param).then(function(data){
+				return data;
+			});
+		}
 
 	}
 	
