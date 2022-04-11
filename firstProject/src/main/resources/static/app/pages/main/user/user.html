@@ -28,7 +28,7 @@
 		<div class="row mb-3">
 			<label for="etc" class="col-sm-2 col-form-label">비고</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="etc" ng-model="userdata.etc" ng-disabled="regAble">
+				<input type="text" class="form-control" id="etc" ng-model="userdata.etc == '' ? '-': userdata.etc" ng-disabled="regAble">
 			</div>
 		</div>
 		<div class="row mb-3">
@@ -51,6 +51,7 @@
 		
 		<div class="layer-right" ng-hide="!regAble">
 			<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#passwdChkModal">비밀번호 변경</button>
+			<button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#userDelete">계정 삭제</button>
 			<button type="button" class="btn btn-success" ng-click="regAble=false;">계정 수정</button>
 		</div>
 	</form>
@@ -90,4 +91,28 @@
 	</div>
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="userDelete">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="staticBackdropLabel">사용자 탈퇴</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="mb-3">
+						<label for="deleteChk" class="col-form-label">비밀번호 :</label>
+						<input type="password" class="form-control" id="deleteChk" ng-model="deleteChk">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">닫기</button>
+				<button type="button" class="btn btn-outline-danger" ng-click="delUser();">탈퇴하기</button>
+			</div>
+		</div>
+	</div>
+</div>
 
