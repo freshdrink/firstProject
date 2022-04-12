@@ -131,4 +131,11 @@ public class loginController {
 	}
 	
 	
+	@RequestMapping(value="/idCheck", method=RequestMethod.GET) // 매핑 경로의 공통부분 (자식)
+	public boolean idCheck(LoginVO loginVo){
+		boolean result = loginService.idCheck(loginVo);
+		return result;
+	}
+	
+	
 }

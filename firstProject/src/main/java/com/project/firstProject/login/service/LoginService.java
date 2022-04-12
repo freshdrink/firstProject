@@ -25,4 +25,6 @@ public interface LoginService {
 	
 	public int setSignUp(Map<String, Object> param);
 	
+	public boolean idCheck(LoginVO loginVo);
+	
 }

@@ -51,7 +51,7 @@
 			user_id as userId,
 			user_name as userName,
 			email as email,
-			address as address,
+			address as addr,
 			to_char(cret_dt, 'YYYY-MM-DD HH24:mm') as cretDt,
 			coalesce(to_char(modify_dt, 'YYYY-MM-DD HH24:mm'), '-') as modiDt,
 			theme as theme,

@@ -116,4 +116,16 @@ public class LoginServiceImpl implements LoginService {
 		return loginMapper.setSignUp(param);
 	}
 
+	@Override
+	public boolean idCheck(LoginVO loginVo){
+		boolean result = false;
+		Map<String, Object> login = loginMapper.login(loginVo);
+
+		if(login != null) {
+			result = true; 
+		}
+
+		return result;
+	}
+
 }
