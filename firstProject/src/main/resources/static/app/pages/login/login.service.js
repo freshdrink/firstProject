@@ -27,6 +27,13 @@
 				return data;
 			});
 		}
+		
+		this.idCheck = function idCheck(param){
+			console.info("idCheck", param);
+			return $http.get(config.apiUrl + 'login/idCheck', {params : param}).then(function(data){
+				return data;
+			});
+		}
 
 	}
 	

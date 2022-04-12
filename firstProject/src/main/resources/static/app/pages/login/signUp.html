@@ -10,37 +10,40 @@
 					<div class="row mb-3">
 						<label for="userid" class="col-sm-3 col-form-label">UserId</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="userid" ng-model="signUpData.userId">
+							<input type="text" class="form-control" id="userid" ng-model="signUpData.userId" ng-blur="idCheck();">
+							<div class="none" id="userid_etc" style="color: red;">
+								중복된 ID입니다.
+							</div>
 						</div>
 					</div>
 					<div class="row mb-3">
 						<label for="password" class="col-sm-3 col-form-label">Password</label>
 						<div class="col-sm-9">
-							<input type="password" class="form-control mb-0" id="password" ng-model="signUpData.passwd">
+							<input type="password" class="form-control mb-0" id="password" ng-model="signUpData.passwd" ng-blur="signChk('password');">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<label for="passwordChk" class="col-sm-3 col-form-label">Passwd Check</label>
 						<div class="col-sm-9">
-							<input type="password" class="form-control mb-0" id="passwordChk" ng-model="signUpData.passwdChk">
+							<input type="password" class="form-control mb-0" id="passwordChk" ng-model="signUpData.passwdChk" ng-blur="signChk('passwordChk');">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<label for="userNm" class="col-sm-3 col-form-label">UserName</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="userNm" ng-model="signUpData.userNm">
+							<input type="text" class="form-control" id="userNm" ng-model="signUpData.userNm" ng-blur="signChk('userNm');">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<label for="email" class="col-sm-3 col-form-label">Email</label>
 						<div class="col-sm-9">
-							<input type="email" class="form-control" id="email" ng-model="signUpData.email">
+							<input type="email" class="form-control" id="email" ng-model="signUpData.email" ng-blur="signChk('email');">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<label for="addr" class="col-sm-3 col-form-label">Address</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="addr" ng-model="signUpData.addr">
+							<input type="text" class="form-control" id="addr" ng-model="signUpData.addr" ng-blur="signChk('addr');">
 						</div>
 					</div>
 					
