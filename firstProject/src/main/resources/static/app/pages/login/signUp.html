@@ -26,6 +26,9 @@
 						<label for="passwordChk" class="col-sm-3 col-form-label">Passwd Check</label>
 						<div class="col-sm-9">
 							<input type="password" class="form-control mb-0" id="passwordChk" ng-model="signUpData.passwdChk" ng-blur="signChk('passwordChk');">
+							<div class="none" id="pass_chk" style="color: red;">
+								패스워드를 다시 확인해주세요.
+							</div>
 						</div>
 					</div>
 					<div class="row mb-3">

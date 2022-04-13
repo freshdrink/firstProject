@@ -18,7 +18,6 @@
 		};
 		
 		$scope.signUp = function(){
-			console.info("$scope.signUpData", $scope.signUpData);
 			if($scope.signUpData.userId == ''){
 				alert("아이디를 입력해주세요.");
 				return;
@@ -62,6 +61,7 @@
 			
 		}
 		
+		//회원가입 id 중복 체크
 		$scope.idChk = false;
 		
 		$scope.idCheck = function(){
@@ -90,14 +90,25 @@
 			
 		}
 		
+		//회원가입 ui 체크
 		$scope.signChk = function(id){
-
-			if($('#'+id).val() == ''){
-				$('#'+id).removeClass('is-valid');
-				$('#'+id).addClass('is-invalid');
-			}else{
+			
+			if(id == 'passwordChk'){
+				if($('#password').val() != $('#passwordChk').val()){
+					$('#'+id).removeClass('is-valid');
+					$('#'+id).addClass('is-invalid');
+					$('#pass_chk').css('display','block');
+					return;
+				}
+				$('#pass_chk').css('display','none');
+			}
+			
+			if($('#'+id).val() != ''){
 				$('#'+id).removeClass('is-invalid');
 				$('#'+id).addClass('is-valid');
+			}else{
+				$('#'+id).removeClass('is-valid');
+				$('#'+id).addClass('is-invalid');
 			}
 			
 		}
