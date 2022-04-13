@@ -23,7 +23,7 @@ public interface LoginService {
 	
 	public int deleteChk(Map<String, Object> param) throws LoginProcessExeption;	
 	
-	public int setSignUp(Map<String, Object> param);
+	public int setSignUp(Map<String, Object> param) throws LoginProcessExeption;
 	
 	public boolean idCheck(LoginVO loginVo);
 	

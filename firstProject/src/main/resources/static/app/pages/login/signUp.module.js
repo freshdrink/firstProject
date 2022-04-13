@@ -63,7 +63,6 @@
 		
 		//회원가입 id 중복 체크
 		$scope.idChk = false;
-		
 		$scope.idCheck = function(){
 			return Auth.idCheck({userId : $scope.signUpData.userId}).then(function(response){
 

@@ -125,7 +125,7 @@ public class loginController {
 	
 	
 	@RequestMapping(value="/setSignUp", method=RequestMethod.POST) // 매핑 경로의 공통부분 (자식)
-	public int setSignUp(@RequestBody Map<String, Object> param){
+	public int setSignUp(@RequestBody Map<String, Object> param) throws LoginProcessExeption{
 		int result = loginService.setSignUp(param);
 		return result;
 	}

@@ -11,6 +11,7 @@ import com.project.firstProject.login.mapper.LoginMapper;
 import com.project.firstProject.login.service.LoginService;
 import com.project.firstProject.login.vo.LoginVO;
 import com.project.firstProject.login.vo.MenuVO;
+import com.project.firstProject.security.AES256Util;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
 
@@ -49,6 +50,7 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public Boolean pwdCheck(String inpPwd, String chkPwd) {
+		/* inpPwd: 받아온값  / chkPwd : 비교할거 */
 		if(inpPwd == null || inpPwd.length() == 0) {
 			return false;
 		}		
@@ -56,7 +58,9 @@ public class LoginServiceImpl implements LoginService {
 			return false;
 		}
 		
-		boolean isEquals = inpPwd.equals(chkPwd);
+		String pw = AES256Util.encrypt(inpPwd);
+		
+		boolean isEquals = pw.equals(chkPwd);
 		return isEquals;
 	}
 
@@ -84,12 +88,14 @@ public class LoginServiceImpl implements LoginService {
 		Map<String, Object> login = loginMapper.login(loginVo);
 		
 		Boolean pwdFailChk = pwdCheck((String)param.get("passwd"), (String)login.get("passwd"));
-		
+
 		if(!pwdFailChk) {
 			throw new LoginProcessExeption("패스워드를 다시 확인해주세요.");
 		}else if(!param.get("newPwd").equals(param.get("pwdChk"))){
 			throw new LoginProcessExeption("패스워드가 일치하지 않습니다.");
 		}
+		
+		param.put("newPasswd", AES256Util.encrypt((String)param.get("newPwd")));
 		
 		return loginMapper.changePasswd(param);
 	}
@@ -112,7 +118,14 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public int setSignUp(Map<String, Object> param) {
+	public int setSignUp(Map<String, Object> param) throws LoginProcessExeption {
+		
+		if(!param.get("passwd").equals(param.get("passwdChk"))){
+			throw new LoginProcessExeption("패스워드가 일치하지 않습니다.");
+		}
+		
+		param.put("password", AES256Util.encrypt((String)param.get("passwd")));
+				
 		return loginMapper.setSignUp(param);
 	}
 

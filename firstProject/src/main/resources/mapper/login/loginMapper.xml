@@ -52,8 +52,8 @@
 			user_name as userName,
 			email as email,
 			address as addr,
-			to_char(cret_dt, 'YYYY-MM-DD HH24:mm') as cretDt,
-			coalesce(to_char(modify_dt, 'YYYY-MM-DD HH24:mm'), '-') as modiDt,
+			to_char(cret_dt, 'YYYY-MM-DD HH24:mi') as cretDt,
+			coalesce(to_char(modify_dt, 'YYYY-MM-DD HH24:mi'), '-') as modiDt,
 			theme as theme,
 			lang as lang,
 			login_fail as loginFailCnt,
@@ -78,7 +78,7 @@
 	<update id="changePasswd" parameterType="Map">
 		UPDATE user_table
 		SET
-			passwd = #{pwdChk},
+			passwd = #{newPasswd},
 			modify_dt = now()
 		WHERE
 			user_id = #{userid}
@@ -98,7 +98,7 @@
 		INSERT INTO user_table 
 			(user_id, passwd, user_name, email, address, cret_dt) 
 		VALUES
-			(#{userId}, #{passwd}, #{userNm}, #{email}, #{addr}, now());
+			(#{userId}, #{password}, #{userNm}, #{email}, #{addr}, now());
 	</insert>
 	
 </mapper>

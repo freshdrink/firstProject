@@ -27,7 +27,7 @@
 		
 		$scope.user = function(){
 			return userService.getUser({userId: userInfo.userid}).then(function(response){
-
+				console.info("response", response);
 				$scope.userdata = response.data.data;
 				
 			}, function(error){
