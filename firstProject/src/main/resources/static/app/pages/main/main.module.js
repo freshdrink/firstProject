@@ -4,7 +4,8 @@
 	angular.module('myApp.main',[
 		'ui.router',
 		'myApp.main.board',
-		'myApp.main.user'
+		'myApp.main.user',
+		'myApp.main.map'
 	])
 	.controller('mainCtrl', mainCtrl)
 	
