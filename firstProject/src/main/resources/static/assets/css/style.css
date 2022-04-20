@@ -44,3 +44,6 @@ input[type="password"] {margin-bottom: 15px; border-top-left-radius: 0; border-t
 /* signup */
 .signup {padding:15px 30px;}
 .signupbtn {width:49%;}
+
+/* map */
+.zoomBtn {position:relative; z-index:1; top:20px; left:-60px; background-color: white}
