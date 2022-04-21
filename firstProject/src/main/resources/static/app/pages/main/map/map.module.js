@@ -20,7 +20,9 @@
 		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 		var map = new kakao.maps.Map(mapContainer, mapOption);
 		
-		
+		// 주소-좌표 변환 객체를 생성합니다
+		// 카카오맵에서 지원해주는 라이브러리를 추가해야 작동. 참고 : https://apis.map.kakao.com/web/guide/  에서 라이브러리 불러오기
+		var geocoder = new kakao.maps.services.Geocoder();
 		
 		
 		/** ================ 마커 표출 ==================== * */
@@ -65,30 +67,47 @@
 		// 지도에 클릭 이벤트를 등록합니다
 		// 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
 		kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+		    searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
+		        if (status === kakao.maps.services.Status.OK) {
+		            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+		            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+		            
+		            // 마커 위치를 클릭한 위치로 옮깁니다
+				    marker.setPosition(mouseEvent.latLng);
+				    
+				    $scope.msg(mouseEvent.latLng);
+				    $scope.msg2(detailAddr);
 
-		    // 클릭한 위도, 경도 정보를 가져옵니다 
-		    var latlng = mouseEvent.latLng; 
-		    
-		    // 마커 위치를 클릭한 위치로 옮깁니다
-		    marker.setPosition(latlng);
-		    
-		    $scope.msg(latlng);
+		        }   
+		    });		    
 
 		});
 		
+		/** ================ 상세 주소 정보 요청 ==================== * */
+		function searchDetailAddrFromCoords(coords, callback) {
+		    // 좌표로 법정동 상세 주소 정보를 요청합니다
+		    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+		}
 		
-		/** ================ 클릭 이벤트 - 위경도 표시 ==================== * */
+		
+		/** ================ 위경도 표시 ==================== * */
 		$scope.msg = function(latlng){
 			
 		    var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, <Br>';
 		    message += '경도는 ' + latlng.getLng() + ' 입니다';
 		    
-		    var resultDiv = document.getElementById('result'); 
-		    resultDiv.innerHTML = message;
+		    var coordsDiv = document.getElementById('coords'); 
+		    coordsDiv.innerHTML = message;
+		    
 		}
 		$scope.msg(mapOption.center);
 		
-		
+		$scope.msg2 = function(addr){
+		    
+		    var addressDiv = document.getElementById('address'); 
+		    addressDiv.innerHTML = addr;
+		    
+		}
 		
 		
 		/** ================ 마우스 오버 이벤트 - 인포윈도우 표시 ==================== * */
