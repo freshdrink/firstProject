@@ -20,31 +20,27 @@
 		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 		var map = new kakao.maps.Map(mapContainer, mapOption);
 		
-		// 주소-좌표 변환 객체를 생성합니다
-		// 카카오맵에서 지원해주는 라이브러리를 추가해야 작동. 참고 : https://apis.map.kakao.com/web/guide/  에서 라이브러리 불러오기
-		var geocoder = new kakao.maps.services.Geocoder();
+		// 인포윈도우를 생성입니다
+		var infowindow = new kakao.maps.InfoWindow({zindex:1}); 
 		
+		/** ================ 처음 접근 시의 마커 표출 ==================== * */
+		// 지도에 표출할 마커입니다
+		var marker = new kakao.maps.Marker(); 
 		
-		/** ================ 마커 표출 ==================== * */
+		// 마커가 생성될 위치(포지션) 세팅
+		marker.setPosition(map.getCenter());
+		marker.setMap(map);// 지도에 마커를 표시합니다
 		
-		// 지도를 클릭한 위치에 표출할 마커입니다
-		var marker = new kakao.maps.Marker({ 
-		    // 지도 중심좌표에 마커를 생성합니다 
-		    position: map.getCenter() 
-		}); 
-		// 지도에 마커를 표시합니다
-		marker.setMap(map);
 		
 
-		
-		
 		/** ============== html5에서 해당 위치 가져오는것 (geolocation) ==================== * */
-		
-		// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
-		if (navigator.geolocation) {
 
+		// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+		/*if (navigator.geolocation) {
+			
 		    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
 		    navigator.geolocation.getCurrentPosition(function(position) {
+
 		        var lat = position.coords.latitude, // 위도
 		            lon = position.coords.longitude; // 경도
 		        
@@ -54,36 +50,58 @@
 			    marker.setPosition(locPosition);
 			    // 지도 중심을 이동 시킵니다
 			    map.setCenter(locPosition);
-			    $scope.msg(locPosition);
+			    
+			    //$scope.msg(locPosition);
 
 		      });
 		    
-		}
+		}*/
+		
+		
+		
+		
 
 		
 
 		/** ================ 클릭 이벤트 ==================== * */
 
 		// 지도에 클릭 이벤트를 등록합니다
-		// 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
-		kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
-		    searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
-		        if (status === kakao.maps.services.Status.OK) {
-		            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
-		            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
-		            
-		            // 마커 위치를 클릭한 위치로 옮깁니다
-				    marker.setPosition(mouseEvent.latLng);
-				    
-				    $scope.msg(mouseEvent.latLng);
-				    $scope.msg2(detailAddr);
+		kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 
-		        }   
-		    });		    
-
+			// 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+		    searchDetailAddrFromCoords(mouseEvent.latLng, addrData);
+		    
+		    //클릭한 위치로 마커 이동
+		    marker.setPosition(mouseEvent.latLng);
 		});
 		
+		
+		
+		
+		
+		
+		/** ================ 주소 정보를 담아주는 함수 ==================== * */
+		
+		var detailAddr = ''; //주소 정보 담기는 변수
+		function addrData(result, status){
+		        if (status === kakao.maps.services.Status.OK) {
+		        	
+		        	console.info("result", result);
+		        	console.info("status", status);
+		        	detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+		            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+				    
+				    //$scope.msg(mouseEvent.latLng);
+				    //$scope.msg2(detailAddr);
+
+		        }   
+		}
+		
 		/** ================ 상세 주소 정보 요청 ==================== * */
+		// 주소-좌표 변환 객체를 생성합니다
+		// 카카오맵에서 지원해주는 라이브러리를 추가해야 작동. 참고 : https://apis.map.kakao.com/web/guide/  에서 라이브러리 불러오기
+		var geocoder = new kakao.maps.services.Geocoder();
+		
 		function searchDetailAddrFromCoords(coords, callback) {
 		    // 좌표로 법정동 상세 주소 정보를 요청합니다
 		    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
@@ -112,16 +130,22 @@
 		
 		/** ================ 마우스 오버 이벤트 - 인포윈도우 표시 ==================== * */
 		
+		
+		
 		// 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
-		var iwContent = '<div style="padding:5px;">Hello World!</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		//var iwContent = '<div style="padding:5px;">Hello World!</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 		
 		// 인포윈도우를 생성합니다
-		var infowindow = new kakao.maps.InfoWindow({
+		/*var infowindow = new kakao.maps.InfoWindow({
 		    content : iwContent
-		});
+		});*/
 		
 		// 마커에 마우스오버 이벤트를 등록합니다
 		kakao.maps.event.addListener(marker, 'mouseover', function() {
+
+			var iwContent = '<div style="padding:5px;">'+ detailAddr + '</div>';
+			infowindow.setContent(iwContent);
+			
 		  // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
 		    infowindow.open(map, marker);
 		});
