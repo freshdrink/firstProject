@@ -29,6 +29,9 @@ main {padding-top:75px;}
 
 /* login */
 .login {display: flex; height: 100vh; justify-content: center; align-items: center; background-image:url("../images/background.jpg");}
+.card-header {background-color: white;}
+.arrow {font-size: 20px;}
+.arrow i {font-size: 25px; cursor: pointer;}
 .card-body a {text-decoration:none;}
 .card-body a:hover {color : black; text-decoration:underline; cursor:pointer;}
 
@@ -47,3 +50,5 @@ input[type="password"] {margin-bottom: 15px; border-top-left-radius: 0; border-t
 
 /* map */
 .zoomBtn {position:relative; z-index:1; top:20px; left:-60px; background-color: white}
+.title {font-weight:bold;display:block;}
+.bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
