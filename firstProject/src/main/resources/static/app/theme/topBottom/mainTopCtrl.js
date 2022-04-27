@@ -9,6 +9,11 @@
 		
 		$scope.loginSession = (sessionStorage.userInfo == undefined) ? false : true;
 		
+		if($scope.loginSession){
+			var userInfo = JSON.parse(sessionStorage.userInfo);
+			$scope.username = userInfo.username;
+		}
+		
 		$scope.logout = function(){
 			delete sessionStorage.userInfo;
 			alert('로그아웃 되었습니다.');

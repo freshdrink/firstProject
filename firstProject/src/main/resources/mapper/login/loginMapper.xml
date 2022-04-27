@@ -23,16 +23,20 @@
 		UPDATE user_table
 		SET
 			login_fail = login_fail + 1
-		WHERE
-			user_id = #{userId}
+		WHERE 1=1
+			AND user_id = #{userId}
+			AND use_yn = 'Y'
+			AND del_yn = 'N'
 	</update>
 	
 	<update id="loginReset" parameterType="String">
 		UPDATE user_table
 		SET
 			login_fail = 0
-		WHERE
-			user_id = #{userId}
+		WHERE 1=1
+			AND user_id = #{userId}
+			AND use_yn = 'Y'
+			AND del_yn = 'N'
 	</update>
 	
 	<select id="getMenuList" parameterType="Map" resultType="MenuVO">
@@ -43,6 +47,7 @@
 		FROM menu_table
 		WHERE use_yn = 'Y'
 		AND del_yn = 'N'
+		ORDER BY menu_seq
 	</select>
 	
 	<select id="getUser" parameterType="LoginVO" resultType="Map">
@@ -69,10 +74,12 @@
 		SET
 			user_name = #{username},
 			email = #{email},
-			address = #{address},
+			address = #{addr},
 			modify_dt = now()
-		WHERE
-			user_id = #{userid}
+		WHERE 1=1
+			AND user_id = #{userid}
+			AND use_yn = 'Y'
+			AND del_yn = 'N'
 	</update> 
 	
 	<update id="changePasswd" parameterType="Map">
@@ -80,8 +87,10 @@
 		SET
 			passwd = #{newPasswd},
 			modify_dt = now()
-		WHERE
-			user_id = #{userid}
+		WHERE 1=1
+			AND user_id = #{userid}
+			AND use_yn = 'Y'
+			AND del_yn = 'N'
 	</update> 
 	
 	<update id="deleteChk" parameterType="Map">
@@ -90,8 +99,10 @@
 			use_yn = 'N',
 			del_yn = 'Y',
 			modify_dt = now()
-		WHERE
-			user_id = #{userid}
+		WHERE 1=1
+			AND user_id = #{userid}
+			AND use_yn = 'Y'
+			AND del_yn = 'N'
 	</update> 	
 	
 	<insert id="setSignUp" parameterType="Map">

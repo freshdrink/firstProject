@@ -46,12 +46,15 @@
 					<div class="row mb-3">
 						<label for="addr" class="col-sm-3 col-form-label">Address</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="addr" ng-model="signUpData.addr" ng-blur="signChk('addr');">
+							<div class="input-group mb-3">
+								<input type="text" class="form-control" id="addr" ng-model="signUpData.addr" ng-blur="signChk('addr');">
+								<button class="btn btn-outline-secondary" style="width:100px;" type="button" ng-click="postCode();">Search</button>
+							</div>
 						</div>
 					</div>
 					
 					<div>
-						<button type="submit" class="btn btn-lg btn-secondary mb-2 mt-3 layer-left signupbtn" onclick="history.back()">Back</button>
+						<button type="submit" class="btn btn-lg btn-secondary mb-2 mt-3 layer-left signupbtn" ui-sref="board">Back</button>
 						<button type="submit" class="btn btn-lg btn-primary mb-2 mt-3 layer-right signupbtn" ng-click="signUp();">Sign Up</button>
 					</div>
 				</form>

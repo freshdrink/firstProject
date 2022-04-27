@@ -5,8 +5,10 @@
 		.config(routeConfig)
 		.controller('boardCtrl', boardCtrl);
 	
-	function boardCtrl($scope, boardService){
+	function boardCtrl($scope, $location, $rootScope, boardService){
 		console.info("boardCtrl");
+		
+		$rootScope.menuUrl = $location.path().split("/").reverse()[0];
 		
 		$scope.test = function(){
 			$scope.number = 2;

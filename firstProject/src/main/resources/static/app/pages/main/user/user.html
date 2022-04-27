@@ -27,8 +27,14 @@
 		</div>
 		<div class="row mb-3">
 			<label for="addr" class="col-sm-2 col-form-label">주소</label>
+			<!-- <div class="col-sm-10" ng-show="regAble">
+				<input type="text" class="form-control" id="addr" ng-model="userdata.addr" disabled>
+			</div> -->
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="addr" ng-model="userdata.addr" ng-disabled="regAble">
+				<div class="input-group">
+					<input type="text" class="form-control" id="addr" ng-model="userdata.addr" ng-disabled="regAble">
+					<button class="btn btn-outline-secondary" style="width:200px;" type="button" ng-click="postCode();" ng-show="!regAble">Search</button>
+				</div>
 			</div>
 		</div>
 		<div class="row mb-3">

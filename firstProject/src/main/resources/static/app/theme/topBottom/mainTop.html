@@ -1,15 +1,42 @@
-<header class="p-3">
-	<div class="container">
-		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-			<img src="assets/images/icon.png" alt="favicon">
-			
-			<!-- <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-				<li><a href="#" class="nav-link px-2 text-white">Home</a></li>
-				<li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-				<li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-				<li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-				<li><a href="#" class="nav-link px-2 text-white">About</a></li>
-			</ul> -->
+<header>
+	<nav class="navbar navbar-expand-lg navbar-dark">
+		<div class="container">
+		
+			<a class="navbar-brand" ui-sref="board">
+				<img src="assets/images/main.png" style="height:38px;" alt="favicon">
+			</a>
+
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarMenu">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item" ng-repeat="menu in menulist">
+						<a class="nav-link" ng-class="menu.menuId == menuUrl? 'active' : ''" ui-sref="{{menu.menuId}}">{{menu.menuName}}</a>
+					</li>
+				</ul>
+				
+				<div ng-if="!loginSession">
+					<button type="button" class="btn btn-outline-light me-2" ui-sref="login">Login</button>
+					<button type="button" class="btn btn-warning" ui-sref="signup">Sign-up</button>
+				</div>
+				
+				<div class="nav-user" ng-if="loginSession">
+					<a ui-sref="user"><b>{{username}} </b>님 어서오세요.</a>
+					<button type="button" class="btn btn-warning logout" ng-click="logout();">Logout</button>
+				</div>
+			</div>
+
+		</div>
+	</nav>	
+	
+	
+		<!-- <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+			<a ui-sref="board" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+				<img src="assets/images/main.png" style="height:38px;" alt="favicon">
+			</a>
+
 			
 			<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 				<li ng-repeat="menu in menulist">
@@ -27,8 +54,8 @@
 			</div>
 			
 			<div class="text-end" ng-if="loginSession">
-				<button type="button" class="btn btn-warning" ng-click="logout();">Logout</button>
+				<a ui-sref="user"><b>{{username}} </b>님 어서오세요.</a>
+				<button type="button" class="btn btn-warning logout" ng-click="logout();">Logout</button>
 			</div>
-		</div>
-	</div>
+		</div> -->
 </header>

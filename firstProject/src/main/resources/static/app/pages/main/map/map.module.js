@@ -5,10 +5,10 @@
 		.config(routeConfig)
 		.controller('mapCtrl', mapCtrl);
 	
-	function mapCtrl($scope){
+	function mapCtrl($scope, $rootScope, $location){
 		console.info("mapCtrl");
-
-		/*var userInfo = JSON.parse(sessionStorage.userInfo);*/
+		
+		$rootScope.menuUrl = $location.path().split("/").reverse()[0];
 		
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 		
