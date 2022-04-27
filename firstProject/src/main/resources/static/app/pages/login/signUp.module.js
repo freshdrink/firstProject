@@ -7,7 +7,7 @@
 	
 	function signUpCtrl($scope, $state, $window, Auth){
 		console.info("signUpCtrl");
-		
+
 		$scope.signUpData = {
 				userId : '',
 				passwd : '',
@@ -60,7 +60,10 @@
 		    }).open();
 	    }
 		
-		$scope.signUp = function(){	
+		$scope.signUp = function(){
+			console.info("signUpData.addr", $scope.signUpData);
+			console.info("$('#addr').val()", $('#addr').val());
+			
 			if($scope.signUpData.userId == ''){
 				alert("아이디를 입력해주세요.");
 				return;
