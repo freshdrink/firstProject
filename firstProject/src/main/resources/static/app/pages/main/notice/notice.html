@@ -1,0 +1,68 @@
+<div class="container px-4 py-5">
+	<h2 class="pb-2 border-bottom">공지사항</h2>
+	
+	<div class="search layer-right p-3">
+		<select class="form-select" ng-model="option">
+			<option value="title">제목</option>
+			<option value="content">내용</option>
+			<option value="user">사용자</option>
+			<option value="ticon">제목+내용</option>
+		</select>
+		<div class="input-group">
+			<input type="text" class="form-control" ng-model="keyword" placeholder="검색어를 입력해주세요.">
+			<button class="btn btn-secondary" type="button" id="button-addon2" ng-click="noticeList();">검색</button>
+		</div>
+	</div>
+	
+	<div class="pt-4">
+		<table class="table table-hover center">
+			<colgroup>
+				<col width="5%">
+				<col width="*">
+				<col width="10%">
+				<col width="15%">
+				<col width="7%">
+			</colgroup>
+			<thead>
+				<tr>
+				  <th scope="col">#</th>
+				  <th scope="col">제목</th>
+				  <th scope="col">작성자</th>
+				  <th scope="col">작성일</th>
+				  <th scope="col">조회수</th>
+				</tr>
+			</thead>
+			<tbody class="table-group-divider" style="cursor:pointer">
+				<tr ng-repeat="list in notice">
+				  <th scope="row">{{ntTotal - $index}}</th>
+				  <td>{{list.title}}</td>
+				  <td>{{list.creatId}}</td>
+				  <td>{{list.creatDt}}</td>
+				  <td>{{list.count}}</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				<li class="page-item disabled">
+					<a class="page-link">Previous</a>
+				</li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item">
+					<a class="page-link" href="#">Next</a>
+				</li>
+			</ul>
+		</nav>
+
+		<div class="layer-right">
+			<button type="button" class="btn btn-success" ui-sref="noticeRegist">등록</button>
+		</div>
+	</div>
+	
+
+</div>
+
+

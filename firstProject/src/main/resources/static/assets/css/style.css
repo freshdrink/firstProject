@@ -1,5 +1,5 @@
 /* header */
-header {position: fixed; top:0; left:0; right:0; background-color:#2C2A29de;}
+header {position: fixed; top:0; left:0; right:0; background-color:#2C2A29de; z-index: 99999;}
 
 /* footer */
 footer {background-color:#2C2A29; color: white; text-align: center; left:0; right:0; bottom:0; padding: 20px; margin-top: 40px;}
@@ -58,3 +58,9 @@ input[type="password"] {margin-bottom: 15px; border-top-left-radius: 0; border-t
 .zoomBtn {position:relative; z-index:1; top:20px; left:-60px; background-color: white}
 .title {font-weight:bold;display:block;}
 .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+
+
+/* notice */
+.search select {width: 8rem; float: left; margin-right:5px;}
+.search .input-group {width: 20rem;}
+.noti-table th {background-color: #f3f3f3; text-align: center;}
