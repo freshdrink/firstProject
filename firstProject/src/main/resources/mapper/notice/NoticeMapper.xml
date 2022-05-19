@@ -5,7 +5,7 @@
 	<select id="getNoticeCnt" parameterType="NoticeVO" resultType="int">
 		SELECT
 			count(*)
-		FROM notice_table
+		FROM notice_table 
 	</select> 
 	
 	<select id="getNoticeList" parameterType="NoticeVO" resultType="NoticeVO">
