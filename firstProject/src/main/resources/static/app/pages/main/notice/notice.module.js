@@ -8,15 +8,8 @@
 	function noticeCtrl($scope, $rootScope, $location, $state, $window, noticeService){
 		console.info("noticeCtrl");
 		
-		if(sessionStorage.userInfo == undefined){
-			alert('잘못된 접근입니다.');
-			$state.go('board');
-			return;
-		}
-		
 		$rootScope.menuUrl = $location.path().split("/").reverse()[0];
 
-		var userInfo = JSON.parse(sessionStorage.userInfo);
 		$scope.option = "title";
 		$scope.keyword = "";
 
@@ -25,6 +18,8 @@
 				option : $scope.option,
 				keyword : $scope.keyword
 			};
+			
+			console.info("param", param);
 			return noticeService.getNoticeList(param).then(function(response){
 				console.info("response", response);
 				

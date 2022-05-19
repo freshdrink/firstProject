@@ -26,6 +26,8 @@ public class NoticeController {
 	@RequestMapping(value="/getNoticeList", method=RequestMethod.GET) // 매핑 경로의 공통부분 (자식)
 	public Map<String, Object> getNoticeList(NoticeVO noticeVo){
 		logger.info("getNoticeList");
+		
+		System.out.println("noticeVo >> " + noticeVo.toString());
 
 		List<NoticeVO> list = noticeService.getNoticeList(noticeVo);
 		

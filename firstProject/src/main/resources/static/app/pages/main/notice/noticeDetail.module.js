@@ -8,16 +8,7 @@
 	function noticeDetailCtrl($scope, $rootScope, $location, $state, $window, userService){
 		console.info("noticeDetailCtrl");
 		
-		if(sessionStorage.userInfo == undefined){
-			alert('잘못된 접근입니다.');
-			$state.go('board');
-			return;
-		}
-		
 		$rootScope.menuUrl = $location.path().split("/").reverse()[0];
-
-		var userInfo = JSON.parse(sessionStorage.userInfo);
-
 		
 		
 	}
