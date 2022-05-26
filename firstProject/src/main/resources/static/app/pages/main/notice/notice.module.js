@@ -13,24 +13,27 @@
 		$scope.option = "title";
 		$scope.keyword = "";
 
-		$scope.noticeList = function(){
+		$scope.callback = function(pagination){
 			var param = {
 				option : $scope.option,
-				keyword : $scope.keyword
+				keyword : $scope.keyword,
+				offset : pagination.offset,
+				limit : pagination.limit
 			};
 			
-			console.info("param", param);
 			return noticeService.getNoticeList(param).then(function(response){
 				console.info("response", response);
 				
 				$scope.notice = response.data.list;
 				$scope.ntTotal = response.data.total;
 				
+				return {total: $scope.ntTotal}
+				
 			}, function(error){
 				console.error('error', error);
 			});
 		}
-		$scope.noticeList();
+		//$scope.noticeList();
 		
 		
 	}

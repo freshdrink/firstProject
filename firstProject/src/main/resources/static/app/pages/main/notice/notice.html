@@ -33,7 +33,8 @@
 			</thead>
 			<tbody class="table-group-divider" style="cursor:pointer">
 				<tr ng-repeat="list in notice" ui-sref="noticeDetail">
-				  <th scope="row">{{ntTotal - $index}}</th>
+				  <!-- <th scope="row">{{(ntTotal-$index) - ((pagination.page - 1)*10)}}</th> -->
+				  <th scope="row">{{(ntTotal-$index)}}</th>
 				  <td>{{list.title}}</td>
 				  <td>{{list.creatId}}</td>
 				  <td>{{list.creatDt}}</td>
@@ -45,19 +46,20 @@
 			</tbody>
 		</table>
 		
-		<nav aria-label="Page navigation example">
+		<!-- <nav aria-label="Page navigation example">
 			<ul class="pagination justify-content-center">
-				<li class="page-item disabled">
-					<a class="page-link">Previous</a>
-				</li>
+				<li class="page-item" ng-class="test? '':'none'"><a class="page-link">&Lang;</a> </li>
+				<li class="page-item"><a class="page-link">&lang;</a> </li>
 				<li class="page-item"><a class="page-link" href="#">1</a></li>
 				<li class="page-item"><a class="page-link" href="#">2</a></li>
 				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item">
-					<a class="page-link" href="#">Next</a>
-				</li>
+				<li class="page-item"><a class="page-link" href="#">&rang;</a> </li>
+				<li class="page-item"><a class="page-link" href="#">&Rang;</a> </li>
 			</ul>
-		</nav>
+		</nav> -->
+		
+		
+		<paging-maker limit=10 length=5 callback="callback" search="noticeList"></paging-maker>
 
 		<div class="layer-right">
 			<button type="button" class="btn btn-success" ui-sref="noticeRegist">등록</button>
