@@ -13,6 +13,8 @@ public class NoticeVO {
 	
 	private String option;
 	private String keyword;
+	private int limit;
+	private int offset;
 	
 	public int getNotiSeq() {
 		return notiSeq;
@@ -85,12 +87,27 @@ public class NoticeVO {
 		this.keyword = keyword;
 	}
 	
+	public int getLimit() {
+		return limit;
+	}
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
+	
+	public int getOffset() {
+		return offset;
+	}
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
+	
+	
 	
 	@Override
 	public String toString() {
 		return "NoticeVO [notiSeq=" + notiSeq + ", title=" + title + ", content=" + content + ", count=" + count
 				+ ", creatDt=" + creatDt + ", creatId=" + creatId + ", ModiDt=" + ModiDt + ", ModiId=" + ModiId
-				+ ", option=" + option + ", keyword=" + keyword + "]";
+				+ ", option=" + option + ", keyword=" + keyword + ", limit=" + limit + ", offset=" + offset + "]";
 	}
 	
 }

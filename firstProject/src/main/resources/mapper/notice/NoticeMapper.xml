@@ -39,6 +39,7 @@
 			AND cret_id like CONCAT('%', #{keyword}, '%')
 		</if>
 		ORDER BY notice_seq DESC
+		OFFSET #{offset} LIMIT #{limit}
 	</select> 
 
 </mapper>
