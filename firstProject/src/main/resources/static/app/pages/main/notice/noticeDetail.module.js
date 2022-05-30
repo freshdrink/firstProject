@@ -7,12 +7,9 @@
 	
 	function noticeDetailCtrl($scope, $rootScope, $location, $state, $stateParams, noticeService){
 		console.info("noticeDetailCtrl");
-
-		if(sessionStorage.userInfo){
-			$scope.user = true;
-		}else{
-			$scope.user = false;
-		}
+		
+		$scope.user = false;
+		if(sessionStorage.userInfo) $scope.user = true;
 		
 		if($stateParams.param1 == undefined || $stateParams.param1 == null){
 			$scope.notiSeq = sessionStorage.notiParam;
@@ -36,8 +33,23 @@
 		}
 		$scope.notiDetail();
 		
+		$scope.delNotice = function(){
+			var result = confirm("정말로 삭제하시겠습니까?");
+			
+			if(result){
+				var params = {
+						notiSeq : $scope.notiSeq
+				};
+				
+				return noticeService.noticeDelete(params).then(function(response){
+					$state.go('notice');
+				}, function(error){
+					console.error('error', error);
+				});
+			}
+		}
+		
 		$scope.goList = function(){
-			delete sessionStorage.notiParam;
 			$state.go('notice');
 		}
 		

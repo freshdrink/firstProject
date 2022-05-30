@@ -27,8 +27,8 @@
 		</table>	
 		
 		<div class="layer-right" ng-if="user">
-			<button type="button" class="btn btn-outline-danger">삭제</button>
-			<button type="button" class="btn btn-outline-success" ui-sref="noticeRegist({param1 : detail.notiSeq})">수정</button>
+			<button type="button" class="btn btn-outline-danger" ng-click="delNotice()">삭제</button>
+			<button type="button" class="btn btn-outline-success" ui-sref="noticeRegist()">수정</button>
 			<button type="button" class="btn btn-outline-dark" ng-click="goList()">목록</button>
 		</div>
 		

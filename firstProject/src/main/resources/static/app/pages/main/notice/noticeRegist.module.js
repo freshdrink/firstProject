@@ -81,7 +81,7 @@
 			};
 			
 			return noticeService.noticeUpdate(params).then(function(response){
-				console.info("response", response);
+				//console.info("response", response);
 				alert("수정이 완료되었습니다.");
 				
 				$state.go('noticeDetail', {param1 : response.data});
@@ -107,9 +107,9 @@
 		.state('noticeRegist',{
 			parent : 'main',
 			url : '/noticeRegist',
-			params : {
+			/*params : {
 				param1 : null
-			},
+			},*/
 			views : {
 				'main' : {
 					templateUrl : 'app/pages/main/notice/noticeRegist.html',

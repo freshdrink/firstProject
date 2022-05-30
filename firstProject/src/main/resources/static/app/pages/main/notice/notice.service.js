@@ -31,6 +31,12 @@
 			});
 		};
 		
+		this.noticeDelete = function noticeDelete(param){
+			return $http.post(config.apiUrl + 'notice/noticeDelete', param).then(function(response){
+				return response;
+			});
+		};
+		
 	};
 
 })();
