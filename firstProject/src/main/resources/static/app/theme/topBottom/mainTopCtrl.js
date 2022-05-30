@@ -28,7 +28,7 @@
 		$scope.menuList = function(){
 			console.info("$scope.loginSession", $scope.loginSession);
 			return Auth.getMenuList().then(function(response){
-				console.info("menuList response", response);
+				//console.info("menuList response", response);
 				$scope.menulist = response.data.list;
 				
 				/*if(!loginSession){
