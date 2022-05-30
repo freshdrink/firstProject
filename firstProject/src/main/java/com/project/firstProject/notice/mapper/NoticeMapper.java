@@ -9,8 +9,14 @@ import com.project.firstProject.notice.vo.NoticeVO;
 @Mapper
 public interface NoticeMapper {
 	
+	public List<NoticeVO> getNoticeList(NoticeVO noticeVo);
+	
 	public int getNoticeCnt(NoticeVO noticeVo);
 	
-	public List<NoticeVO> getNoticeList(NoticeVO noticeVo);
+	public NoticeVO getNoticeDetail(NoticeVO noticeVo);
+	
+	public int noticeInsert(NoticeVO noticeVo);
+	
+	public int noticeUpdate(NoticeVO noticeVo);
 
 }

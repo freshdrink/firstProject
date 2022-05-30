@@ -25,4 +25,19 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeMapper.getNoticeList(noticeVo);
 	}
 
+	@Override
+	public NoticeVO getNoticeDetail(NoticeVO noticeVo) {
+		return noticeMapper.getNoticeDetail(noticeVo);
+	}
+
+	@Override
+	public int noticeInsert(NoticeVO noticeVo) {
+		return noticeMapper.noticeInsert(noticeVo);
+	}
+
+	@Override
+	public int noticeUpdate(NoticeVO noticeVo) {
+		return noticeMapper.noticeUpdate(noticeVo);
+	}
+
 }

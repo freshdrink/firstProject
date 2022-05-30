@@ -7,6 +7,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,8 +27,6 @@ public class NoticeController {
 	@RequestMapping(value="/getNoticeList", method=RequestMethod.GET) // 매핑 경로의 공통부분 (자식)
 	public Map<String, Object> getNoticeList(NoticeVO noticeVo){
 		logger.info("getNoticeList");
-		
-		System.out.println("noticeVo >> " + noticeVo.toString());
 
 		List<NoticeVO> list = noticeService.getNoticeList(noticeVo);
 		
@@ -37,6 +36,24 @@ public class NoticeController {
 		param.put("total", noticeService.getNoticeCnt(noticeVo));
 		
 		return param;
+	}
+	
+	@RequestMapping(value="/getNoticeDetail", method=RequestMethod.GET) // 매핑 경로의 공통부분 (자식)
+	public NoticeVO getNoticeDetail(NoticeVO noticeVo){
+		logger.info("getNoticeDetail");
+		return noticeService.getNoticeDetail(noticeVo);
+	}
+	
+	@RequestMapping(value="/noticeInsert", method=RequestMethod.POST) // 매핑 경로의 공통부분 (자식)
+	public int noticeInsert(@RequestBody NoticeVO noticeVo){
+		logger.info("noticeInsert");
+		return noticeService.noticeInsert(noticeVo);
+	}
+	
+	@RequestMapping(value="/noticeUpdate", method=RequestMethod.POST) // 매핑 경로의 공통부분 (자식)
+	public int noticeUpdate(@RequestBody NoticeVO noticeVo){
+		logger.info("noticeUpdate");
+		return noticeService.noticeUpdate(noticeVo);
 	}
 
 }

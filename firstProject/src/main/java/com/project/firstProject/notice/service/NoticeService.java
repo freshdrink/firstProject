@@ -10,4 +10,9 @@ public interface NoticeService {
 	
 	public int getNoticeCnt(NoticeVO noticeVo);
 	
+	public NoticeVO getNoticeDetail(NoticeVO noticeVo);
+	
+	public int noticeInsert(NoticeVO noticeVo);
+	
+	public int noticeUpdate(NoticeVO noticeVo);
 }
