@@ -12,7 +12,7 @@
 				return response;
 			});
 		};
-		
+		 
 		this.getNoticeDetail = function getNoticeDetail(param){
 			return $http.get(config.apiUrl + 'notice/getNoticeDetail', {params: param}).then(function(response){
 				return response;

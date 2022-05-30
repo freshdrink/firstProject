@@ -12,7 +12,7 @@
 			alert('잘못된 접근입니다.');
 			$state.go('board');
 			return;
-		}
+		} 
 		
 		$rootScope.menuUrl = $location.path().split("/").reverse()[0];
 		$scope.userInfo = JSON.parse(sessionStorage.userInfo);

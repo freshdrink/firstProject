@@ -10,9 +10,15 @@
 		
 		$rootScope.menuUrl = $location.path().split("/").reverse()[0];
 		delete sessionStorage.notiParam;
+		
+		if(sessionStorage.userInfo){
+			$scope.user = true;
+		}else{
+			$scope.user = false;
+		}
 
 		$scope.option = "title";
-		$scope.keyword = "";
+		$scope.keyword = ""; 
 
 		$scope.callback = function(pagination){
 			$scope.page = pagination.page;

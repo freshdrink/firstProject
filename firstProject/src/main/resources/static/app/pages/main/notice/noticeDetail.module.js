@@ -7,14 +7,18 @@
 	
 	function noticeDetailCtrl($scope, $rootScope, $location, $state, $stateParams, noticeService){
 		console.info("noticeDetailCtrl");
-		
-		$rootScope.menuUrl = $location.path().split("/").reverse()[0];
 
+		if(sessionStorage.userInfo){
+			$scope.user = true;
+		}else{
+			$scope.user = false;
+		}
+		
 		if($stateParams.param1 == undefined || $stateParams.param1 == null){
 			$scope.notiSeq = sessionStorage.notiParam;
 		}else{
 			$scope.notiSeq = $stateParams.param1;
-		}
+		} 
 
 		$scope.notiDetail = function(){
 			var params = {
