@@ -32,9 +32,8 @@
 				</tr>
 			</thead>
 			<tbody class="table-group-divider" style="cursor:pointer">
-				<tr ng-repeat="list in notice" ui-sref="noticeDetail">
-				  <!-- <th scope="row">{{(ntTotal-$index) - ((pagination.page - 1)*10)}}</th> -->
-				  <th scope="row">{{(ntTotal-$index)}}</th>
+				<tr ng-repeat="list in notice" ui-sref="noticeDetail({param1 : list.notiSeq})">
+				  <th scope="row">{{(ntTotal-$index) - ((page - 1)*limit)}}</th>
 				  <td>{{list.title}}</td>
 				  <td>{{list.creatId}}</td>
 				  <td>{{list.creatDt}}</td>
@@ -45,19 +44,6 @@
 				</tr>
 			</tbody>
 		</table>
-		
-		<!-- <nav aria-label="Page navigation example">
-			<ul class="pagination justify-content-center">
-				<li class="page-item" ng-class="test? '':'none'"><a class="page-link">&Lang;</a> </li>
-				<li class="page-item"><a class="page-link">&lang;</a> </li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">&rang;</a> </li>
-				<li class="page-item"><a class="page-link" href="#">&Rang;</a> </li>
-			</ul>
-		</nav> -->
-		
 		
 		<paging-maker limit=10 length=5 callback="callback" search="noticeList"></paging-maker>
 

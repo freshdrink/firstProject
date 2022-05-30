@@ -9,11 +9,15 @@
 		console.info("noticeCtrl");
 		
 		$rootScope.menuUrl = $location.path().split("/").reverse()[0];
+		delete sessionStorage.notiParam;
 
 		$scope.option = "title";
 		$scope.keyword = "";
 
 		$scope.callback = function(pagination){
+			$scope.page = pagination.page;
+			$scope.limit = pagination.limit;
+			
 			var param = {
 				option : $scope.option,
 				keyword : $scope.keyword,
@@ -22,7 +26,7 @@
 			};
 			
 			return noticeService.getNoticeList(param).then(function(response){
-				console.info("response", response);
+				//console.info("response", response);
 				
 				$scope.notice = response.data.list;
 				$scope.ntTotal = response.data.total;

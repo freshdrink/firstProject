@@ -11,20 +11,16 @@
 			<tbody class="noti-table">
 				<tr>
 					<th>제목</th>
-					<td>
-						제목 좔좔좔
-					</td>
+					<td>{{detail.title}}</td>
 				</tr>
 				<tr>
 					<th>사용자</th>
-					<td>
-						사용자 이름 짜장
-					</td>
+					<td>{{detail.creatId}}</td>
 				</tr>
 				<tr>
 					<th>내용</th>
 					<td style="height:20rem;">
-						내용 좔좔좔
+						{{detail.content}}
 					</td>
 				</tr>
 			</tbody>
@@ -32,8 +28,8 @@
 		
 		<div class="layer-right">
 			<button type="button" class="btn btn-outline-danger">삭제</button>
-			<button type="button" class="btn btn-outline-success" ui-sref="noticeRegist">수정</button>
-			<button type="button" class="btn btn-outline-dark" ui-sref="notice">목록</button>
+			<button type="button" class="btn btn-outline-success" ui-sref="noticeRegist({param1 : detail.notiSeq})">수정</button>
+			<button type="button" class="btn btn-outline-dark" ng-click="goList()">목록</button>
 		</div>
 		
 	</div>
