@@ -39,7 +39,40 @@
 			AND cret_id like CONCAT('%', #{keyword}, '%')
 		</if>
 		ORDER BY notice_seq DESC
-		OFFSET #{offset} LIMIT #{limit}
+		LIMIT #{limit}
+		OFFSET #{offset} 
 	</select> 
+
+	<select id="getNoticeDetail" parameterType="NoticeVO" resultType="NoticeVO">
+		SELECT
+			notice_seq as notiSeq,
+			title as title,
+			content as content,
+			to_char(cret_dt,'YYYY-MM-DD') as creatDt,
+			cret_id as creatId,
+			to_char(modify_dt,'YYYY-MM-DD') as ModiDt,
+			modify_id as ModiId
+		FROM notice_table
+		WHERE 1=1
+		AND notice_seq = #{notiSeq}
+	</select>
+	
+	<select id="noticeInsert" parameterType="NoticeVO" resultType="int">
+		INSERT INTO notice_table
+			(title, content, cret_dt, cret_id) 
+		VALUES
+			(#{title}, #{content}, now(), #{creatId})
+		RETURNING notice_seq
+	</select>
+	
+	<select id="noticeUpdate" parameterType="NoticeVO" resultType="int">
+		UPDATE notice_table SET
+			title = #{title},
+			content = #{content},
+			modify_dt = now(),
+			cret_id = #{modiId}
+		WHERE notice_seq = #{notiSeq}
+		RETURNING notice_seq
+	</select>
 
 </mapper>
