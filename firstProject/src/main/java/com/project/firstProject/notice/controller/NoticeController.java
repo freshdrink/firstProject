@@ -55,5 +55,12 @@ public class NoticeController {
 		logger.info("noticeUpdate");
 		return noticeService.noticeUpdate(noticeVo);
 	}
+	
+	@RequestMapping(value="/noticeDelete", method=RequestMethod.POST) // 매핑 경로의 공통부분 (자식)
+	public int noticeDelete(@RequestBody NoticeVO noticeVo){
+		logger.info("noticeDelete");
+		return noticeService.noticeDelete(noticeVo);
+	}
+	
 
 }

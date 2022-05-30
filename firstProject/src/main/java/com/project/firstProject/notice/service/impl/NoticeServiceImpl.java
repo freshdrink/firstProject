@@ -40,4 +40,9 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeMapper.noticeUpdate(noticeVo);
 	}
 
+	@Override
+	public int noticeDelete(NoticeVO noticeVo) {
+		return noticeMapper.noticeDelete(noticeVo);
+	}
+
 }

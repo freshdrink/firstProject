@@ -7,6 +7,8 @@
 			count(*)
 		FROM notice_table 
 		WHERE 1=1
+		AND del_yn = 'N'
+		AND use_yn = 'Y'
 		<if test="option == 'title'">
 			AND title like CONCAT('%', #{keyword}, '%')
 		</if>
@@ -29,6 +31,8 @@
 			modify_id as ModiId
 		FROM notice_table
 		WHERE 1=1
+		AND del_yn = 'N'
+		AND use_yn = 'Y'
 		<if test="option == 'title'">
 			AND title like CONCAT('%', #{keyword}, '%')
 		</if>
@@ -74,5 +78,12 @@
 		WHERE notice_seq = #{notiSeq}
 		RETURNING notice_seq
 	</select>
+	
+	<update id="noticeDelete" parameterType="NoticeVO">
+		UPDATE notice_table SET
+			del_yn = 'Y'
+		WHERE notice_seq = #{notiSeq}
+	</update>
+	
 
 </mapper>

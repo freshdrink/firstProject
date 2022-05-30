@@ -15,4 +15,7 @@ public interface NoticeService {
 	public int noticeInsert(NoticeVO noticeVo);
 	
 	public int noticeUpdate(NoticeVO noticeVo);
+	
+	public int noticeDelete(NoticeVO noticeVo);
+	
 }
