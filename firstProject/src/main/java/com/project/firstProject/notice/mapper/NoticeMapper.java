@@ -15,6 +15,8 @@ public interface NoticeMapper {
 	
 	public NoticeVO getNoticeDetail(NoticeVO noticeVo);
 	
+	public void noticeCount(NoticeVO noticeVo);
+	
 	public int noticeInsert(NoticeVO noticeVo);
 	
 	public int noticeUpdate(NoticeVO noticeVo);
