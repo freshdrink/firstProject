@@ -7,7 +7,7 @@
 	
 	function noticeRegistCtrl($scope, $rootScope, $location, $state, $window, $stateParams, noticeService){
 		console.info("noticeRegistCtrl");
-		
+
 		if(sessionStorage.userInfo == undefined){
 			alert('잘못된 접근입니다.');
 			$state.go('board');
@@ -18,6 +18,24 @@
 		$scope.userInfo = JSON.parse(sessionStorage.userInfo);
 		//$scope.notiSeq = $stateParams.param1;
 		$scope.notiSeq = sessionStorage.notiParam;
+		
+		//https://lemontia.tistory.com/439
+		var oEditors = [];
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef: oEditors,
+			elPlaceHolder: "content",
+			sSkinURI: "/assets/js/smarteditor/SmartEditor2Skin.html",
+			htParams : {
+				//글꼴, 굵기 등 있는 툴바.
+				bUseToolbar : true,
+				// 입력창 크기 조절바 사용 여부
+				bUseVerticalResizer : false,
+				// 모드 탭(Editor | HTML | TEXT) 사용 여부
+				bUseModeChanger : false
+			},
+			fCreator: "createSEditor2"
+		});
+		
 		
 		if($scope.notiSeq){
 			detail();
