@@ -23,9 +23,7 @@
 				</tr>
 				<tr>
 					<th>내용</th>
-					<td style="height:20rem;">
-						{{detail.content}}
-					</td>
+					<td style="height:20rem;" ng-bind-html="bindHtml(detail.content)"></td>
 				</tr>
 			</tbody>
 		</table>	

@@ -27,8 +27,9 @@
 			content as content,
 			to_char(cret_dt,'YYYY-MM-DD') as creatDt,
 			cret_id as creatId,
-			to_char(modify_dt,'YYYY-MM-DD') as ModiDt,
-			modify_id as ModiId
+			to_char(modify_dt,'YYYY-MM-DD') as modiDt,
+			modify_id as modiId,
+			count as count
 		FROM notice_table
 		WHERE 1=1
 		AND del_yn = 'N'
@@ -54,12 +55,20 @@
 			content as content,
 			to_char(cret_dt,'YYYY-MM-DD') as creatDt,
 			cret_id as creatId,
-			to_char(modify_dt,'YYYY-MM-DD') as ModiDt,
-			modify_id as ModiId
+			to_char(modify_dt,'YYYY-MM-DD') as modiDt,
+			modify_id as modiId,
+			count as count
 		FROM notice_table
 		WHERE 1=1
 		AND notice_seq = #{notiSeq}
 	</select>
+	
+	<update id="noticeCount" parameterType="NoticeVO">
+		UPDATE notice_table SET
+			count = count+1
+		WHERE 1=1
+		AND notice_seq = #{notiSeq}
+	</update>
 	
 	<select id="noticeInsert" parameterType="NoticeVO" resultType="int">
 		INSERT INTO notice_table

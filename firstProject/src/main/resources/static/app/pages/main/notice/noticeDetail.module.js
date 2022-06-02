@@ -5,7 +5,7 @@
 		.config(routeConfig)
 		.controller('noticeDetailCtrl', noticeDetailCtrl);
 	
-	function noticeDetailCtrl($scope, $rootScope, $location, $state, $stateParams, noticeService){
+	function noticeDetailCtrl($scope, $rootScope, $location, $state, $stateParams, $sce, noticeService){
 		console.info("noticeDetailCtrl");
 		
 		$scope.user = false;
@@ -23,7 +23,7 @@
 			};
 			
 			return noticeService.getNoticeDetail(params).then(function(response){
-
+				
 				$scope.detail = response.data;
 				sessionStorage.notiParam = JSON.stringify($scope.detail.notiSeq);
 				
@@ -32,6 +32,10 @@
 			});
 		}
 		$scope.notiDetail();
+		
+		$scope.bindHtml = function(content){
+			return $sce.trustAsHtml(content);
+		}
 		
 		$scope.delNotice = function(){
 			var result = confirm("정말로 삭제하시겠습니까?");

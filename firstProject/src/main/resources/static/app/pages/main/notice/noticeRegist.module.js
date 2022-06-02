@@ -19,6 +19,7 @@
 		//$scope.notiSeq = $stateParams.param1;
 		$scope.notiSeq = sessionStorage.notiParam;
 		
+		// 스마트 에디터.
 		//https://lemontia.tistory.com/439
 		var oEditors = [];
 		nhn.husky.EZCreator.createInIFrame({
@@ -42,9 +43,13 @@
 		}
 		
 		function validate(){
+			//에디터에 작성한 값을 html 형식으로 변환해주는 것.
+			oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+			$scope.content = $('#content').val();
+			
 			if($scope.title == undefined || $scope.title == ''){
 				alert("제목을 입력해주세요");
-			}else if($scope.content == undefined || $scope.content == ''){
+			}else if($scope.content == ""  || $scope.content == null || $scope.content == '&nbsp;' || $scope.content == '<p><br></p>' || $scope.content == '<p>&nbsp;</p>'){
 				alert("내용을 입력해주세요");
 			}else{
 				return true;
