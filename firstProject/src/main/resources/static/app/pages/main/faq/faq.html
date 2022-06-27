@@ -1,0 +1,47 @@
+<div class="container px-4 py-5">
+	<h2 class="pb-2 border-bottom">FAQ</h2>
+	
+	<div class="search layer-right p-3">
+		<select class="form-select" ng-model="option">
+			<option value="title">제목</option>
+			<option value="content">내용</option>
+		</select>
+		<div class="input-group">
+			<input type="text" class="form-control" ng-model="keyword" placeholder="검색어를 입력해주세요.">
+			<button class="btn btn-secondary" type="button" id="button-addon2" ng-click="faqList();">검색</button>
+		</div>
+	</div>
+	
+	<div style="padding-top: 5rem;">
+	
+		<div class="accordion accordion" id="accordionFlushExample">
+			<div class="accordion-item" ng-repeat="list in faq">
+				<h2 class="accordion-header" id="flush-heading{{$index}}">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$index}}">
+						{{(faqTotal-$index) - ((page - 1)*limit)}}&nbsp; | &nbsp;{{list.title}}
+					</button>
+				</h2>
+				<div id="flush-collapse{{$index}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample" style="background-color:#f9f9f9;">
+					<div class="accordion-body p-4">
+						<div ng-bind-html="bindHtml(list.content)"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="card" ng-show="faq.length == 0 || faqTotal == 0">
+			<div class="card-body center">
+				검색된 결과가 없습니다.
+			</div>
+		</div>
+		
+		<div class="pt-4">
+			<paging-maker limit=10 length=5 callback="callback" search="faqList"></paging-maker>
+		</div>
+
+	</div>
+	
+
+</div>
+
+

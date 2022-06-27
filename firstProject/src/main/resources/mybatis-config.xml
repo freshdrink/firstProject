@@ -12,6 +12,8 @@
 		<typeAlias alias="LoginVO" type="com.project.firstProject.login.vo.LoginVO" />
 		<typeAlias alias="MenuVO" type="com.project.firstProject.login.vo.MenuVO" />
 		<typeAlias alias="NoticeVO" type="com.project.firstProject.notice.vo.NoticeVO" />
+		<typeAlias alias="FaqVO" type="com.project.firstProject.faq.vo.FaqVO" />
+		
 		
 	</typeAliases>
 </configuration>

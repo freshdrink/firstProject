@@ -8,7 +8,8 @@
 		'myApp.main.map',
 		'myApp.main.notice',
 		'myApp.main.noticeDetail',
-		'myApp.main.noticeRegist'
+		'myApp.main.noticeRegist',
+		'myApp.main.faq'
 	])
 	.controller('mainCtrl', mainCtrl)
 	

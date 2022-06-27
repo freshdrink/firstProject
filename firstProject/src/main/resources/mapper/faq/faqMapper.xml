@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.firstProject.faq.mapper.FaqMapper">
+
+	<select id="getFaqListCount" parameterType="FaqVO" resultType="int">
+		SELECT
+			count(*)
+		FROM faq_table
+		WHERE 1=1
+		AND del_yn = 'N'
+		AND use_yn = 'Y'
+		<if test="option == 'title'">
+			AND title like CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="option == 'content'">
+			AND content like CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="option == 'user'">
+			AND cret_id like CONCAT('%', #{keyword}, '%')
+		</if>
+	</select> 
+
+	<select id="getFaqList" parameterType="FaqVO" resultType="FaqVO">
+		SELECT
+			faq_seq as faqSeq,
+			title as title,
+			content as content,
+			to_char(cret_dt,'YYYY-MM-DD') as creatDt,
+			cret_id as creatId,
+			to_char(modify_dt,'YYYY-MM-DD') as modiDt,
+			modify_id as modiId
+		FROM faq_table
+		WHERE 1=1
+		AND del_yn = 'N'
+		AND use_yn = 'Y'
+		<if test="option == 'title'">
+			AND title like CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="option == 'content'">
+			AND content like CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="option == 'user'">
+			AND cret_id like CONCAT('%', #{keyword}, '%')
+		</if>
+		ORDER BY faq_seq DESC
+		LIMIT #{limit}
+		OFFSET #{offset} 
+	</select> 
+	
+</mapper>
